@@ -24,6 +24,12 @@ docker-compose exec check composer install
 - http://0.0.0.0:8000/ - main application
 - http://0.0.0.0:8080/ - adminer
 
+## DB (and Adminer credentials)
+- DB_SERVER=db-mysql
+- DB_USERNAME=root
+- DB_PASSWORD=root
+- DB_NAME=check
+
 ## DB structure
 ![alt text](./public/assets/img/image2.png)
 ![alt text](./public/assets/img/image3.png)

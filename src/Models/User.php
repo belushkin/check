@@ -5,7 +5,8 @@ namespace App\Models;
 class User {
 
     private $id;
-    private $name;
+    private $username;
+    private $email;
     private $password;
     private $role;
     private $createdAt;
@@ -30,17 +31,33 @@ class User {
     /**
      * @return mixed
      */
-    public function getName()
+    public function getUsername()
     {
-        return $this->name;
+        return $this->username;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $username
      */
-    public function setName($name): void
+    public function setUsername($username): void
     {
-        $this->name = $name;
+        $this->username = $username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
+    {
+        $this->email = $email;
     }
 
     /**
@@ -111,7 +128,8 @@ class User {
         $user = new self();
 
         $user->setId($sourceObject->id);
-        $user->setName($sourceObject->name);
+        $user->setUsername($sourceObject->username);
+        $user->setEmail($sourceObject->email);
         $user->setPassword($sourceObject->password);
         $user->setRole($sourceObject->role);
         $user->setCreatedAt($sourceObject->created_at);

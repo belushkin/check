@@ -25,15 +25,24 @@
             <a class="navbar-brand" href="#">Check24 technical blog</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right">
-                <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
+            <?php
+            /** @var \App\Models\User $user */
+            if ($user) {
+                echo "Hello " . $user->getUsername();
+            } else {
+            ?>
+                <form class="navbar-form navbar-right" method="POST" action="/login">
+                    <div class="form-group">
+                        <input name="email" type="text" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input name="password" type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
+            <?php
+            }
+            ?>
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
