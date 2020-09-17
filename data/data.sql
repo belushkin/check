@@ -19,7 +19,7 @@ CREATE TABLE `articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `articles` (`id`, `author_id`, `title`, `body`, `created_at`, `updated_at`) VALUES
-(1,	1,	'Hello world',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',	'2020-09-17 09:34:12',	'2020-09-17 09:34:12');
+(1,	1,	'Was machen Sie, seit wann machen Sie das und warum lieben Sie Ihren Job?',	'Ich liebe die Fotografie. Sie ist meine absolute Leidenschaft und so habe ich mich 2018 als Fotografin selbstständig gemacht. Aus meinem Hobby ist so ein verantwortungsvoller Beruf geworden.\r\n\r\nDa ich mich als Hochzeitsfotografin spezialisiert habe und diese meistens am Wochenende stattfinden, lässt sich das auch sehr gut vereinbaren. Für mich ist es der perfekte Ausgleich zwischen Alltag und Kreativität.',	'2020-09-17 09:34:12',	'2020-09-17 09:34:12');
 
 DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
@@ -38,13 +38,14 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
   `role` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`id`, `name`, `role`, `created_at`, `updated_at`) VALUES
-(1,	'Editor',	NULL,	'2020-09-17 09:32:24',	'2020-09-17 09:32:24');
+INSERT INTO `users` (`id`, `name`, `password`, `role`, `created_at`, `updated_at`) VALUES
+(1,	'Editor',	'c4ca4238a0b923820dcc509a6f75849b',	NULL,	'2020-09-17 09:32:24',	'2020-09-17 12:10:18');
 
--- 2020-09-17 09:47:36
+-- 2020-09-17 12:10:32
