@@ -24,13 +24,3 @@ $router->get('/', function() use ($usersDAO, $articlesDAO) {
     return $contoller
         ->indexAction();
 });
-
-//
-//$router->get('/api/v1/data', function() {
-//    $db = DBFactory::create(
-//        new CSV(dirname(__DIR__).'/data/export.csv')
-//    );
-//
-//    $aggregator = new OnBoardingFlow($db->export());
-//    return JSONTransformer::fromArray($aggregator->aggregate());
-//});
