@@ -6,6 +6,7 @@ use App\DAO\IDAO;
 use App\Models\Article;
 use App\Models\User;
 use App\Services\View\View;
+use App\DTO\ArticlesDTO;
 
 class HomeController extends ActionController {
 
@@ -13,9 +14,6 @@ class HomeController extends ActionController {
 
     private $usersDAO;
     private $articlesDAO;
-
-    private $user;
-    private $article;
 
     public function __construct(View $view, IDAO ...$dao)
     {
@@ -25,20 +23,15 @@ class HomeController extends ActionController {
         $this->articlesDAO = $dao[1];
     }
 
-    public function indexAction() {
-
-//        /** @var Stock $a */
-//        echo "<pre>";
-        $this->user = User::fromObject($this->usersDAO->findById(1));
-        $this->article = Article::fromObject($this->articlesDAO->findById(1));
-
-//        print_r($user);
-//        print_r($article);
-//        print_r(getenv('DB_NAME'));
+    public function indexAction()
+    {
+        $user = User::fromObject($this->usersDAO->findById(1));
+        $articleModel = Article::fromObject($this->articlesDAO->findById(1));
+        $articleDto = ArticlesDTO::convertToDto($articleModel);
 
         return $this->render(
             $this->template,
-            ['nasos' => 'parsos']
+            ['top_post' => $articleDto]
         );
     }
 
