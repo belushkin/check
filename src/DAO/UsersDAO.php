@@ -11,7 +11,9 @@ class UsersDAO implements IDAO {
         $this->pdo = $pdo;
     }
 
-    public function findById() {
-
+    public function findById(int $id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id=:id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchObject();
     }
 }
