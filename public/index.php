@@ -1,17 +1,21 @@
 <?php declare(strict_types=1);
 
-use App\Service\Http\Router;
-use App\Service\Http\Request;
+use App\Services\Http\Router;
+use App\Services\Http\Request;
+use App\Controllers\HomeController;
+use App\Services\View\View;
 
 require dirname(__DIR__).'/config/bootstrap.php';
 
-//$router = new Router(new Request());
-//
-//$router->get('/', function() {
-//    $tpl = new View( dirname(__DIR__).'/src/Template' );
-//
-//    return $tpl->render( 'home');
-//});
+$router = new Router(new Request());
+
+$router->get('/', function() {
+    $contoller = new HomeController(
+        new View( dirname(__DIR__).'/src/Templates' )
+    );
+    return $contoller->render( 'home');
+});
+
 //
 //$router->get('/api/v1/data', function() {
 //    $db = DBFactory::create(
