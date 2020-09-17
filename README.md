@@ -6,3 +6,8 @@ http://0.0.0.0:8080/ - adminer
 
 
 
+server: db-mysql
+username: root
+password: root
+db: check
+

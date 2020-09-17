@@ -2,15 +2,18 @@
 
 namespace App\Controllers;
 
+use App\DAO\IDAO;
 use App\Services\View\View;
 
 class ActionController {
 
-    private $view;
+    protected $view;
+    protected $dao;
 
-    public function __construct(View $view)
+    public function __construct(View $view, IDAO $dao)
     {
         $this->view = $view;
+        $this->dao = $dao;
     }
 
     public function render(string $template) {
