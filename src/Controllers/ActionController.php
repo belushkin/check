@@ -8,16 +8,14 @@ use App\Services\View\View;
 class ActionController {
 
     protected $view;
-    protected $dao;
 
-    public function __construct(View $view, IDAO $dao)
+    public function __construct(View $view)
     {
         $this->view = $view;
-        $this->dao = $dao;
     }
 
-    public function render(string $template) {
-        return $this->view->render( $template);
+    public function render(string $template, $variables = array()) {
+        return $this->view->render( $template, $variables);
     }
 
 }

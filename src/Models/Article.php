@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-class User {
+class Article {
 
     private $id;
-    private $name;
-    private $role;
+    private $authorId;
+    private $title;
+    private $body;
     private $createdAt;
     private $updatedAt;
 
@@ -29,33 +30,49 @@ class User {
     /**
      * @return mixed
      */
-    public function getName()
+    public function getAuthorId()
     {
-        return $this->name;
+        return $this->authorId;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $authorId
      */
-    public function setName($name): void
+    public function setAuthorId($authorId): void
     {
-        $this->name = $name;
+        $this->authorId = $authorId;
     }
 
     /**
      * @return mixed
      */
-    public function getRole()
+    public function getTitle()
     {
-        return $this->role;
+        return $this->title;
     }
 
     /**
-     * @param mixed $role
+     * @param mixed $title
      */
-    public function setRole($role): void
+    public function setTitle($title): void
     {
-        $this->role = $role;
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * @param mixed $body
+     */
+    public function setBody($body): void
+    {
+        $this->body = $body;
     }
 
     /**
@@ -91,15 +108,16 @@ class User {
     }
 
     public static function fromObject($sourceObject): self {
-        $user = new self();
+        $article = new self();
 
-        $user->setId($sourceObject->id);
-        $user->setName($sourceObject->name);
-        $user->setRole($sourceObject->role);
-        $user->setCreatedAt($sourceObject->created_at);
-        $user->setUpdatedAt($sourceObject->updated_at);
+        $article->setId($sourceObject->id);
+        $article->setTitle($sourceObject->title);
+        $article->setBody($sourceObject->body);
+        $article->setAuthorId($sourceObject->author_id);
+        $article->setCreatedAt($sourceObject->created_at);
+        $article->setUpdatedAt($sourceObject->updated_at);
 
-        return $user;
+        return $article;
     }
 
 }
